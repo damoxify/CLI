@@ -1,4 +1,4 @@
-<!-- # My CLI Application
+# My CLI Application
 
 My CLI Application is a tool that allows you to manage users and posts.
 
@@ -44,4 +44,4 @@ Run unit tests using `pytest` to ensure the correctness of the application.
 ## License
 
 This project is licensed under the MIT License.
-    -->
+   
