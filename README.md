@@ -1,6 +1,6 @@
-# My CLI Application
+# CLI Application
 
-My CLI Application is a tool that allows you to manage users and posts.
+ CLI Application is a tool that allows you to manage users and posts.
 
 ## Installation
 
@@ -14,7 +14,7 @@ My CLI Application is a tool that allows you to manage users and posts.
 
 To add a new user, use the following command:
 
-my-cli add_user <name>
+cli add_user <name>
 
 
 ### List Users and Their Posts
@@ -22,7 +22,7 @@ my-cli add_user <name>
 To list all users and their posts, use the following command:
 
 
-my-cli list_users_and_posts
+cli list_users_and_posts
 
 
 ### Sort Numbers
@@ -30,12 +30,12 @@ my-cli list_users_and_posts
 To sort a list of numbers, use the following command:
 
 
-my-cli sort_numbers <number1> <number2> ...
+cli sort_numbers <number1> <number2> ...
 
 
 ## Algorithm
 
-My CLI Application uses the Bubble Sort algorithm to sort numbers.
+CLI Application uses the Bubble Sort algorithm to sort numbers.
 
 ## Testing
 
