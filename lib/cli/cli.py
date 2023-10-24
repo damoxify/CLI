@@ -1,7 +1,7 @@
 import click
-from cli import User, Post
-from cli import Session
-from algorithms import bubble_sort
+from cli.models import User, Post
+from cli.database import Session
+from cli.algorithms import bubble_sort
 
 @click.group()
 def cli():
