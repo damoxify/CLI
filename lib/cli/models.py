@@ -16,14 +16,11 @@ class Post(Base):
     user_id = Column(Integer, ForeignKey('users.id'))
 
 class Comment(Base):
-    _tablename_ = 'comments'
+    __tablename__ = 'comments'
     id = Column(Integer, primary_key=True)
     content = Column(String)
     user_id = Column(Integer, ForeignKey('users.id'))
-    
-class Node:
-    def __init__(self, user):
-        self.user = user
-        self.next = None
+
+
 
 

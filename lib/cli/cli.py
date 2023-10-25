@@ -1,6 +1,6 @@
 import click
-from cli.models import User, Post
-from cli.database import Session
+from models import User, Post, Comment
+from database import Session
 
 @click.group()
 def cli():
@@ -27,7 +27,16 @@ def add_post(title, user_id):
     session.close()
     print(f'Post "{title}" added for user {user_id}.')
 
-
+@cli.command()
+@click.argument('content')
+@click.option('--user', type=click.INT, help='User ID to associate with the comment')
+def add_comment(content, user):
+    session = Session()
+    comment = Comment(content=content, user_id=user)
+    session.add(comment)
+    session.commit()
+    session.close()
+    print(f'Comment "{content}" added.')
 
 @cli.command()
 def list_users_and_posts():
@@ -41,6 +50,10 @@ def list_users_and_posts():
 
 
 # ALGORITHMS USED
+class Node:
+    def __init__(self, user):
+        self.user = user
+        self.next = None
 
 class LinkedList:
     def __init__(self):
