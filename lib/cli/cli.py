@@ -1,7 +1,6 @@
 import click
 from cli.models import User, Post
 from cli.database import Session
-from cli.algorithms import bubble_sort
 
 @click.group()
 def cli():
@@ -41,9 +40,86 @@ def list_users_and_posts():
     session.close()
 
 
+# ALGORITHMS USED
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def insert(self, user):
+        new_node = Node(user)
+        new_node.next = self.head
+        self.head = new_node
+
+    def sort_by_name(self):
+        if self.head is None:
+            return 
+        current = self.head
+        while current:
+            min_node = current
+            runner = current
+            while runner:
+                if runner.user.name < min_node.user.name:
+                    min_node = runner
+                runner = runner.next
+
+            temp = min_node.user
+            min_node.user = current.user
+            current.user = temp
+
+            current = current.next
+class Node:
+    def __init__(self, user):
+        self.user = user
+        self.next = None
+
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def insert(self, user):
+        new_node = Node(user)
+        new_node.next = self.head
+        self.head = new_node
+
+    def sort_by_name(self):
+        if self.head is None:
+            return
+
+        current = self.head
+        while current:
+            min_node = current
+            runner = current
+            while runner:
+                if runner.user.name < min_node.user.name:
+                    min_node = runner
+                runner = runner.next
+
+            temp = min_node.user
+            min_node.user = current.user
+            current.user = temp
+
+            current = current.next
 
 @cli.command()
-@click.argument('numbers', nargs=-1, type=int)
-def sort_numbers(numbers):
-    bubble_sort(numbers)
-    print(f'Sorted Numbers: {numbers}')
+def sort_users():
+    session = Session()
+    users = session.query(User).all()
+    session.close()
+
+    linked_list = LinkedList()
+    for user in users:
+        linked_list.insert(user)
+
+    linked_list.sort_by_name()
+
+    print('Users sorted by name:')
+    current = linked_list.head
+    while current:
+        print(f'ID: {current.user.id}, Name: {current.user.name}')
+        current = current.next
+
+
+

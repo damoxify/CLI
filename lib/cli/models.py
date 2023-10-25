@@ -15,4 +15,9 @@ class Post(Base):
     title = Column(String)
     user_id = Column(Integer, ForeignKey('users.id'))
 
+class Node:
+    def __init__(self, user):
+        self.user = user
+        self.next = None
+
 
